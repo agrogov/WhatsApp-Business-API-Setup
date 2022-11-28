@@ -1,6 +1,7 @@
 # Whatsapp Business API deployment Docker image for Google Cloud
 
 To run use `deployment/run.sh` and `monitoring/run.sh` scripts or commands below.
+
 Meta documentation for sender deployment: https://developers.facebook.com/docs/whatsapp/on-premises/get-started/installation
 
 Based on Meta's scripts: https://github.com/WhatsApp/WhatsApp-Business-API-Setup-Scripts
@@ -16,9 +17,11 @@ docker run -i --rm --user=root \
 -e WA_DB_USERNAME='root' \
 -e WA_DB_PASSWORD='mysqlpass' \
 -e SERVER_IP="$(hostname -i | awk '{print $1}')" \
--e EXTERNAL_HOSTNAME="${SERVER_IP}" \
+-e EXTERNAL_HOSTNAME="$(hostname -i | awk '{print $1}')" \
 -e HOST="$(hostname | awk '{split($0,a,"."); print a[1]}')}" \
--e WA_SERVICES='wacore cadvisor node-exporter' \
+-e WA_SERVICES='master cadvisor node-exporter' \
+#-e WA_SERVICES='wacore cadvisor node-exporter' \
+#-e WA_SERVICES='waweb cadvisor node-exporter' \
 morgulio/whatsapp-sender:latest
 ```
 
