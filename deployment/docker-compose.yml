@@ -38,10 +38,10 @@ services:
     restart: unless-stopped
     command: ["/opt/whatsapp/bin/wait_on_postgres.sh", "/opt/whatsapp/bin/launch_within_docker.sh"]
     ports:
-      - "7250:6250"
-      - "7251:6251"
-      - "7252:6252"
-      - "7253:6253"
+      - "6250:6250"
+      - "6251:6251"
+      - "6252:6252"
+      - "6253:6253"
     volumes:
       - "${HOME_APP}/whatsapp/waent/data:/usr/local/waent/data"
       - "whatsappMedia:/usr/local/wamedia"
@@ -49,7 +49,7 @@ services:
       WA_APP_MULTICONNECT: 1
       WA_CONFIG_ON_DB: 1
       WA_MASTER_NODE: 0
-      COREAPP_EXTERNAL_PORTS: 7250,7251,7252,7253
+      COREAPP_EXTERNAL_PORTS: 6250,6251,6252,6253
       EXTERNAL_HOSTNAME: "${SERVER_IP}"
       COREAPP_HOSTNAME: "${EXTERNAL_HOSTNAME}"
       COREAPP_CONTAINER_NAME: "coreapp_${HOST}"
