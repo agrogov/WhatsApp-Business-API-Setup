@@ -7,7 +7,7 @@ find "$HOME_APP"
 
 mkdir -p "$HOME_APP/prometheus/data"
 mkdir -p "$HOME_APP/grafana"
-chmod 777 -R "$HOME_APP"
+chmod 777 -R "$HOME_APP" || true
 
 echo "Starting docker-compose..."
 exec docker-compose up

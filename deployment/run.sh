@@ -2,9 +2,11 @@
 
 #docker build -t whatsapp-sender .
 
+mkdir -p /root/whatsapp-sender
+
 docker run -i --rm --user=root \
 -v /var/run/docker.sock:/var/run/docker.sock \
--v "$(pwd)":/whatsapp-sender \
+-v /root/whatsapp-sender:/whatsapp-sender \
 -e NFS_SHARE_OPTS='nfsvers=3,addr=10.83.1.2,nolock,hard,retrans=3,timeo=600,resvport,rw' \
 -e WA_DB_HOSTNAME='db.host.ip' \
 -e WA_DB_PORT='5432' \
