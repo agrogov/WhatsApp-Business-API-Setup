@@ -1,6 +1,8 @@
 version: '3'
 
 volumes:
+  whatsappData:
+    external: true
   whatsappMedia:
     driver_opts:
       type: "nfs"
@@ -16,8 +18,8 @@ services:
       - "443:443"
       - "9090:443"
     volumes:
-      - "${HOME_APP}/whatsapp/waent/data:/usr/local/waent/data"
       - "whatsappMedia:/usr/local/wamedia"
+      - "whatsappData:/usr/local/waent/data"
     environment:
       WA_APP_MULTICONNECT: 1
       WEBAPP_EXTERNAL_PORTS: 443,9090
@@ -43,8 +45,8 @@ services:
       - "6252:6252"
       - "6253:6253"
     volumes:
-      - "${HOME_APP}/whatsapp/waent/data:/usr/local/waent/data"
       - "whatsappMedia:/usr/local/wamedia"
+      - "whatsappData:/usr/local/waent/data"
     environment:
       WA_APP_MULTICONNECT: 1
       WA_CONFIG_ON_DB: 1
@@ -72,8 +74,8 @@ services:
       - "6252:6252"
       - "6253:6253"
     volumes:
-      - "${HOME_APP}/whatsapp/waent/data:/usr/local/waent/data"
       - "whatsappMedia:/usr/local/wamedia"
+      - "whatsappData:/usr/local/waent/data"
     environment:
       WA_APP_MULTICONNECT: 1
       WA_MASTER_NODE: 1
